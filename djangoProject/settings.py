@@ -13,6 +13,8 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 from pathlib import Path
 import os
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
+from django.conf.global_settings import DATABASES
+
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 
@@ -84,25 +86,29 @@ WSGI_APPLICATION = 'djangoProject.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
-DATABASES = {
+# DATABASES = {
+#
+#     'default': {
+#
+#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#
+#         'NAME': 'fabelio',
+#
+#         'USER': 'fabelio_admin',
+#
+#         'PASSWORD': 'password123321',
+#
+#         'HOST': '127.0.0.1',
+#
+#         'PORT': '5432',
+#
+#     }
+#
+# }
 
-    'default': {
+import dj_database_url
 
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-
-        'NAME': 'fabelio',
-
-        'USER': 'fabelio_admin',
-
-        'PASSWORD': 'password123321',
-
-        'HOST': '127.0.0.1',
-
-        'PORT': '5432',
-
-    }
-
-}
+DATABASES['default'] =dj_database_url.config(default='postgres://...')
 
 
 # Password validation
