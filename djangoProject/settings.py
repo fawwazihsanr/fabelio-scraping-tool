@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'corsheaders',
     'core',
+    'django_cron',
 ]
 
 MIDDLEWARE = [
@@ -108,6 +109,10 @@ DATABASES['default'] = dj_database_url.config(default='postgres://...')
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
+
+CRON_CLASSES = [
+    'djangoProject.jobs.Jobs'
+]
 
 AUTH_PASSWORD_VALIDATORS = [
     {
