@@ -17,7 +17,7 @@ import requests
 @permission_classes((AllowAny,))
 def create_submission(request):
     try:
-        if parse.urlparse(request.data['url']).hostname == 'fabelio':
+        if parse.urlparse(request.data['url']).hostname == 'fabelio.com':
             header = {
                 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/77.0.3865.90 Safari/537.36'}
             page = requests.get(request.data['url'], headers=header)
@@ -47,8 +47,8 @@ def create_submission(request):
                 status=status.HTTP_400_BAD_REQUEST)
     except Exception as exp:
         return Response(
-            data={'message': 'Internal server error'},
-            status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+            data={'message': 'Input fabelio PRODUCT url'},
+            status=status.HTTP_400_BAD_REQUEST)
 
 
 @api_view(['GET'])
